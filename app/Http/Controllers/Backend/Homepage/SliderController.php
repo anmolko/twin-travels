@@ -40,7 +40,7 @@ class SliderController extends BackendBaseController
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->uploadImage($request->file('image_input'),'1920','1024');
+                $image_name = $this->uploadImage($request->file('image_input'),'1920','900');
                 $request->request->add(['image'=>$image_name]);
             }
             $request->request->add(['created_by' => auth()->user()->id ]);
@@ -50,7 +50,6 @@ class SliderController extends BackendBaseController
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
             Session::flash('error',$this->panel.'  was not created. Something went wrong.');
         }
 
@@ -71,7 +70,7 @@ class SliderController extends BackendBaseController
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'1920','1024');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'1920','900');
                 $request->request->add(['image'=>$image_name]);
             }
 

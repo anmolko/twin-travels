@@ -44,7 +44,7 @@ class HomePageController extends BackendBaseController
     public function index()
     {
         $data                       = [];
-        $data['slider_images']      = Slider::active()->descending()->pluck('image');
+        $data['sliders']            = Slider::active()->descending()->get();
         $data['all_packages']       = Package::with('packageRibbon')->active()->descending()->get();
         $data['testimonials']       = Testimonial::active()->descending()->get();
         $data['countries']          = Country::active()->has('packages')->withCount('packages')->descending()->get();

@@ -43,12 +43,12 @@ if ($('.thumbimg-countnumber-carousel').length) {
     return false;
   });
   // making thumbnail to owl dots
-  var thumbCount = myCarousel.find('.owl-dot').length;
-  for (var i = 0; i < thumbCount; i++) {
-    var newIdx = i + 2;
-    var itemThumb = myCarousel.find(singleItem).eq(newIdx).data('thumb');
-    myCarousel.find('.owl-dot').eq(i).find('span').css('background-image', 'url(' + itemThumb + ')');
-  }
+  // var thumbCount = myCarousel.find('.owl-dot').length;
+  // for (var i = 0; i < thumbCount; i++) {
+  //   var newIdx = i + 2;
+  //   var itemThumb = myCarousel.find(singleItem).eq(newIdx).data('thumb');
+  //   myCarousel.find('.owl-dot').eq(i).find('span').css('background-image', 'url(' + itemThumb + ')');
+  // }
 }
 
 /*  Team-Slider-Owl-carousel  */

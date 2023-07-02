@@ -7,6 +7,30 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="mb-3">
+            {!! Form::label('title', 'Title', ['class' => 'form-label required']) !!}
+            {!! Form::text('title', null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter title']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('subtitle', 'Subtitle', ['class' => 'form-label']) !!}
+            {!! Form::text('subtitle', null,['class'=>'form-control','id'=>'subtitle','placeholder'=>'Enter subtitle']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('button', 'Button', ['class' => 'form-label']) !!}
+            {!! Form::text('button', null,['class'=>'form-control','id'=>'button','placeholder'=>'Enter button']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('link', 'Link', ['class' => 'form-label']) !!}
+            {!! Form::text('link', null,['class'=>'form-control','id'=>'link','placeholder'=>'Enter link']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="mb-3">
             {!! Form::label('image_input', 'Images', ['class' => 'form-label request']) !!}
             {!! Form::file('image_input', ['class'=>'form-control','id'=>'image_input']) !!}
         </div>

@@ -1097,6 +1097,18 @@ h2 {
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
+.listing-style1 .popular {
+    background-color: #0ab39c;
+}
+.listing-style1 .in-demand {
+    background-color: #405189;
+}
+.listing-style1 .trending {
+    background-color: #f7b84b;
+}
+.listing-style1 .top-rated {
+    background-color: #EB6753;
+}
 .listing-style1 .tag-del {
   background-color: #ffffff;
   border-radius: 4px;
@@ -1166,7 +1178,7 @@ h2 {
 }
 .listing-style1 .list-text {
   color: #717171;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .listing-style1 .list-meta2 a {
   background-color: #ffffff;
@@ -3272,10 +3284,17 @@ h2 {
   }
 }
 
-.inner-banner-style1 .hero-sub-title {
+.hero-sub-title {
   color: #ffffff;
   font-family: var(--title-font-family);
   font-weight: 400;
+    font-size: 20px;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
 }
 .inner-banner-style1 .hero-title {
   color: #ffffff;
@@ -3681,7 +3700,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  height: 900px;
+  height: 650px;
   position: relative;
 }
 .slider-slide-item:before {
@@ -3702,8 +3721,10 @@ h2 {
 }
 
 .thumbimg-countnumber-carousel .slider-subtitle {
-  font-family: var(--title-font-family);
-  font-weight: 600;
+    color: #ffffff;
+    font-family: var(--title-font-family);
+    font-weight: 400;
+  font-size: 35px;
   margin: 0 0 10px;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
@@ -3714,13 +3735,13 @@ h2 {
 }
 @media (max-width: 991.98px) {
   .thumbimg-countnumber-carousel .slider-subtitle {
-    font-size: 26px;
+    font-size: 22px;
   }
 }
 .thumbimg-countnumber-carousel .slider-title {
   font-family: var(--title-font-family);
   font-weight: 600;
-  font-size: 52px;
+  font-size: 45px;
   margin: 0;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
@@ -3759,12 +3780,14 @@ h2 {
   animation-name: fadeInDown;
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
+    width: 40%;
 }
 .thumbimg-countnumber-carousel .active .slider-title {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-delay: 0.5s;
   animation-delay: 0.5s;
+    width: 50%;
 }
 .thumbimg-countnumber-carousel .active .slider-text {
   -webkit-animation-name: fadeInUp;
@@ -4450,7 +4473,7 @@ h2 {
 /* Brands */
 /* Commons Styles of Template */
 section {
-  padding: 120px 0;
+  padding: 60px 0;
   position: relative;
 }
 @media (max-width: 991.98px) {
@@ -4556,6 +4579,13 @@ section {
   font-size: 14px;
   font-family: var(--title-font-family);
   padding-left: 50px;
+}
+.advance-search-field select {
+    border: transparent;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: var(--title-font-family);
+    padding-left: 50px;
 }
 .advance-search-field .box-search input::placeholder {
   color: var(--headings-color);
@@ -4850,11 +4880,11 @@ section {
 
 .cta-banner4 {
   background-attachment: fixed;
-  background-image: url(../images/background/cta-bg-1.jpg);
+  background-image: url(../images/background/hero-bg.jpeg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 350px;
 }
 
 @media (max-width: 575.98px) {
@@ -5598,6 +5628,7 @@ section {
   transition: all 0.4s ease;
 }
 .home9-city-style:hover {
+    background: white;
   border-radius: 12px;
   -webkit-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
   -moz-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
@@ -7987,8 +8018,8 @@ li.mm-listitem:focus {
   right: 0;
 }
 .advance-style4 .form-control {
-  background-color: #ffffff;
-  padding-left: 0;
+  background-color: #F7F7F7;
+  padding-left: 50px;
 }
 .advance-style4.at-home10 {
   border-radius: 12px;
@@ -8540,7 +8571,7 @@ input:focus-visible {
   position: absolute;
   right: 340px;
   top: 300px;
-  width: 60px;
+  width: 0px;
 }
 @media (max-width: 1399.98px) {
   .thumbimg-countnumber-carousel .owl-dots {
@@ -8583,7 +8614,7 @@ input:focus-visible {
 }
 .banner-wrapper .owl-dot.active span {
   opacity: 1;
-  outline: 2px solid #ffffff;
+  outline: transparent;
   outline-offset: 5px;
 }
 .banner-wrapper .carousel-control-block {
@@ -10409,6 +10440,10 @@ input:focus-visible {
   .bb1-sm {
     border-bottom: 1px solid #DDDDDD;
   }
+}
+
+.city-img img{
+    border-radius: 12px 12px 12px 12px;
 }
 
 /*# sourceMappingURL=style.css.map */
