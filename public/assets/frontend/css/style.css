@@ -62,7 +62,7 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
   --icon-font-family2: "Flaticon";
   --container-width: 1290px;
   --divder-space: 200px;
-  --headings-color: #181A20 ;
+  --headings-color: #081c3a;
 }
 
 /* Mixins */
@@ -6031,7 +6031,7 @@ textarea:focus {
   padding-bottom: 20px;
 }
 .testimonial-style1 .icon {
-  color: rgba(235, 103, 83, 0.15);
+  color: rgb(68 107 166);
   font-size: 36px;
   position: absolute;
   right: 60px;
@@ -6049,6 +6049,9 @@ textarea:focus {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 8px;
+  margin-top: 32px;
+  text-align: justify;
+  padding: 15px;
 }
 .testimonial-style1 .testimonial-review a {
   color: #E59819;
@@ -7101,7 +7104,7 @@ header.nav-innerpage-style .ace-responsive-menu .visible_list a.list-item {
 }
 header.nav-innerpage-style .ace-responsive-menu .megamenu_style a.list-item:hover,
 header.nav-innerpage-style .ace-responsive-menu .visible_list a.list-item:hover {
-  background-color: rgba(235, 103, 83, 0.07);
+    background-color: rgb(190 207 234 / 45%);
 }
 @media (max-width: 1399.98px) {
   header.nav-innerpage-style .ace-responsive-menu .megamenu_style a.list-item,
@@ -8018,7 +8021,7 @@ li.mm-listitem:focus {
   right: 0;
 }
 .advance-style4 .form-control {
-  background-color: #F7F7F7;
+  background-color: #b9cded52;
   padding-left: 50px;
 }
 .advance-style4.at-home10 {
@@ -10000,7 +10003,7 @@ input:focus-visible {
 }
 
 .bgc-f7 {
-  background-color: #F7F7F7;
+    background-color: #9cbdf024;
 }
 
 .bgc-71 {

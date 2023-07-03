@@ -357,7 +357,7 @@
                             </div>
                             <div class="author-content d-flex align-items-center">
                                 <div class="author-img">
-                                    <img src="{{ asset(imagePath($testimonial->image))}}" alt="testimonial image"/>
+                                    <img src="{{ asset(imagePath($testimonial->image))}}" alt=""/>
                                 </div>
                                 <div class="author-bio">
                                     <h4 class="author__title">{{ $testimonial->title ?? '' }}</h4>
@@ -426,42 +426,42 @@
                 <div class="row padding-top-50px">
                     @foreach($data['blogs'] as $blog)
                         <div class="col-lg-4 responsive-column">
-                        <div class="card-item blog-card">
-                            <div class="card-img">
-                                <img class="lazy" data-src="{{ asset(imagePath($blog->image))}}" alt=""/>
-                                <div class="post-format icon-element">
-                                    <i class="la la-photo"></i>
-                                </div>
-                                <div class="card-body">
-                                    <div class="post-categories">
-                                        <a href="#" class="badge">{{ $blog->category->title ?? '' }}</a>
+                            <div class="card-item blog-card">
+                                <div class="card-img">
+                                    <img class="lazy" data-src="{{ asset(imagePath($blog->image))}}" alt=""/>
+                                    <div class="post-format icon-element">
+                                        <i class="la la-photo"></i>
                                     </div>
-                                    <h3 class="card-title line-height-26">
-                                        <a href="#">{{ $blog->title ?? '' }}</a>
-                                    </h3>
-                                    <p class="card-meta">
-                                        <span class="post__date">{{date('d M Y', strtotime($blog->created_at))}}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-between"
-                            >
-                                <div class="author-content d-flex align-items-center">
-                                    <div class="author-bio">
-                                        <a href="#" class="author__title">Read all</a>
+                                    <div class="card-body">
+                                        <div class="post-categories">
+                                            <a href="#" class="badge">{{ $blog->category->title ?? '' }}</a>
+                                        </div>
+                                        <h3 class="card-title line-height-26">
+                                            <a href="#">{{ $blog->title ?? '' }}</a>
+                                        </h3>
+                                        <p class="card-meta">
+                                            <span class="post__date">{{date('d M Y', strtotime($blog->created_at))}}</span>
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="post-share">
-                                    <ul>
-                                        <li>
-                                            <a href="#"><i class="la la-share icon-element"></i></a>
-                                        </li>
-                                    </ul>
+                                <div class="card-footer d-flex align-items-center justify-content-between"
+                                >
+                                    <div class="author-content d-flex align-items-center">
+                                        <div class="author-bio">
+                                            <a href="#" class="author__title">Read all</a>
+                                        </div>
+                                    </div>
+                                    <div class="post-share">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="la la-share icon-element"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- end card-item -->
                         </div>
-                        <!-- end card-item -->
-                    </div>
                     @endforeach
                 </div>
                 <!-- end row -->
