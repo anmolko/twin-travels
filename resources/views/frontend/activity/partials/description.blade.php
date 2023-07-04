@@ -1,75 +1,87 @@
-<div id="description" class="page-scroll">
-    <div class="single-content-item pb-4">
-        <h3 class="title font-size-26">{{ $data['row']->title }}</h3>
-    </div>
-
-    <div class="section-block"></div>
-
-    <!-- single-content-item -->
-    <div class="single-content-item py-4">
+<div class="col-lg-8">
+    <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+        <h4 class="title fz17 mb30">Overview</h4>
         <div class="row">
-            <div class="col-lg-4 responsive-column">
-                <div class="single-tour-feature d-flex align-items-center mb-3">
-                    <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                        <i class="la la-globe"></i>
-                    </div>
-                    <div class="single-feature-titles">
-                        <h3 class="title font-size-15 font-weight-medium">Country</h3>
-                        <span class="font-size-13">{{ $data['row']->country->title ?? '' }}</span>
+            <div class="col-sm-6 col-lg-4">
+                <div class="overview-element mb25 d-flex align-items-center">
+                    <span class="icon flaticon-maps"></span>
+                    <div class="ml15">
+                        <h6 class="mb-0">Country</h6>
+                        <p class="text mb-0 fz15">{{ $data['row']->country->title ?? '' }}</p>
                     </div>
                 </div>
             </div>
-
-            @if($data['row']->duration)
-                <div class="col-lg-4 responsive-column">
-                    <div class="single-tour-feature d-flex align-items-center mb-3">
-                        <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                            <i class="la la-clock-o"></i>
-                        </div>
-                        <div class="single-feature-titles">
-                            <h3 class="title font-size-15 font-weight-medium">Duration</h3>
-                            <span class="font-size-13">{{ $data['row']->duration }}</span>
+            <div class="col-sm-6 col-lg-4">
+                <div class="overview-element mb25 d-flex align-items-center">
+                    <span class="icon flaticon-event"></span>
+                    <div class="ml15">
+                        <h6 class="mb-0">Duration</h6>
+                        <p class="text mb-0 fz15">{{ $data['row']->duration }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="overview-element mb25 d-flex align-items-center">
+                    <span class="icon flaticon-home-1"></span>
+                    <div class="ml15">
+                        <h6 class="mb-0">Category</h6>
+                        <p class="text mb-0 fz15">{{ $data['row']->packageCategory->title ?? '' }}</p>
+                    </div>
+                </div>
+            </div>
+            @if($data['row']->packageRibbon)
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-element mb25-xs d-flex align-items-center">
+                        <span class="icon flaticon-discovery"></span>
+                        <div class="ml15">
+                            <h6 class="mb-0">Ribbon</h6>
+                            <p class="text mb-0 fz15">{{ $data['row']->packageRibbon->title ?? '' }}</p>
                         </div>
                     </div>
                 </div>
             @endif
-
-            <div class="col-lg-4 responsive-column">
-                <div class="single-tour-feature d-flex align-items-center mb-3">
-                    <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                        <i class="la la-flag-checkered"></i>
-                    </div>
-                    <div class="single-feature-titles">
-                        <h3 class="title font-size-15 font-weight-medium">Category</h3>
-                        <span class="font-size-13">{{ $data['row']->packageCategory->title ?? '' }}</span>
-                    </div>
-                </div><!-- end single-tour-feature -->
-            </div><!-- end col-lg-4 -->
-
-            @if($data['row']->packageRibbon)
-                <div class="col-lg-4 responsive-column">
-                    <div class="single-tour-feature d-flex align-items-center mb-3">
-                        <div class="single-feature-icon icon-element ml-0 flex-shrink-0 mr-3">
-                            <i class="la la-star-o"></i>
-                        </div>
-                        <div class="single-feature-titles">
-                            <h3 class="title font-size-15 font-weight-medium">Type</h3>
-                            <span class="font-size-13">{{ $data['row']->packageRibbon->title ?? '' }}</span>
-                        </div>
-                    </div><!-- end single-tour-feature -->
-                </div><!-- end col-lg-4 -->
-            @endif
-        </div><!-- end row -->
+        </div>
     </div>
-    <!-- end single-content-item -->
-
-    <div class="section-block"></div>
-
-    <div class="single-content-item padding-top-40px padding-bottom-40px ck-editor-description">
-        <h3 class="title font-size-22">Description</h3>
-        <div class="py-3">
+    <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+        <h4 class="title fz17 mb30">Description</h4>
+        <div class="text mb10">
             {!! $data['row']->description !!}
         </div>
-    </div><!-- end single-content-item -->
-    <div class="section-block"></div>
+    </div>
+    @if($data['row']->video)
+        <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+            <h4 class="title fz17 mb30">Video</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="property_video bdrs12 w-100" style="background-image: {{ getYoutubeThumbnail($data['row']->video) }}">
+                        <a class="video_popup_btn mx-auto popup-img popup-youtube"
+                           href="{{ $data['row']->video  }}">
+                            <span class="flaticon-play"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if($data['row']->itinerary)
+        <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+            <h4 class="title fz17 mb30">Itinerary</h4>
+            <div class="text mb10">
+                {!! $data['row']->itinerary !!}
+            </div>
+        </div>
+    @endif
+
+    @if($data['row']->map)
+        <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+            <h4 class="title fz17 mb30 mt30">Map</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <iframe class="position-relative bdrs12 mt30 h250" loading="lazy"
+                            src="{{ $data['row']->map }}" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>

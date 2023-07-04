@@ -36,18 +36,6 @@ if (!function_exists('getNepaliMonth')) {
     }
 }
 
-function url_get_contents ($Url) {
-    if (!function_exists('curl_init')){
-        die('CURL is not installed!');
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $Url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($ch);
-    curl_close($ch);
-    return $output;
-}
-
 if (!function_exists('greeting_msg')) {
     function greeting_msg(): string
     {
@@ -274,30 +262,6 @@ if (!function_exists('galleryImagePath')) {
     }
 }
 
-
-if (!function_exists('getRibbonClass')) {
-    /**
-     * @param $value
-     * @return string
-     */
-    function getRibbonClass($key): string
-    {
-        if($key == 'popular'){
-            $class = 'ribbon-success';
-        }else if($key =='top-rated'){
-            $class = 'ribbon-info';
-        }else if($key == 'in-demand'){
-            $class = 'ribbon-secondary';
-        }else if($key == 'trending'){
-            $class = 'ribbon-warning';
-        }else{
-            $class = 'ribbon-danger';
-        }
-
-        return $class;
-    }
-}
-
 if (!function_exists('get_page_section_icons')) {
     /**
      * @param $value
@@ -329,6 +293,29 @@ if (!function_exists('get_page_section_icons')) {
         }
 
         return $icon;
+    }
+
+    if (! function_exists('getYoutubeThumbnail')) {
+        /**
+         * returns youtube thumbnail based on its link
+         *
+         * @param  string  $link
+         * @return string
+         */
+        function getYoutubeThumbnail($link)
+        {
+            $video_id = explode("?v=", $link);
+            if (!isset($video_id[1])) {
+                $video_id = explode("youtu.be/", $link);
+            }
+            $youtubeID = $video_id[1];
+            if (empty($video_id[1])) {
+                $video_id = explode("/v/", $link);
+            }
+            $video_id       = explode("&", $video_id[1]);
+            $youtubeVideoID = $video_id[0];
+            return "https://img.youtube.com/vi/".$youtubeVideoID."/hqdefault.jpg";
+        }
     }
 }
 

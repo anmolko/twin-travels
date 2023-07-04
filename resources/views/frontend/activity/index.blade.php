@@ -3,7 +3,7 @@
 
 @section('content')
 
-    @include($view_path.'includes.search_breadcrumb')
+    @include($view_path.'includes.search_breadcrumb', ['breadcrumb_image'=>'team-cta-bg.jpeg'])
 
     <section class="card-area section--padding">
         <div class="container">

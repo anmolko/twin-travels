@@ -491,6 +491,17 @@ h2 {
   right: -10px;
 }
 
+.breadcumb-style1 .breadcumb-list a.second:after {
+    content: "/";
+    font-size: 14px;
+    position: absolute;
+    right: -10px;
+}
+
+.breadcumb-style1 .breadcumb-list a.last {
+    padding-left: 10px;
+}
+
 /* Dashboard Style Code Here */
 .dashboard_header {
   transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
