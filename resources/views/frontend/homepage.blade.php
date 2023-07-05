@@ -99,7 +99,7 @@
                                             @endif
                                             <div class="list-price">
                                                 <a href="{{ route('frontend.activity.category', $package->packageCategory->slug) }}">
-                                                    {{ $package->packageCategory->title ?? '' }}
+                                                    {{ $package->packageCategory->title }} {{ $package->price ?  ' / ' . $package->price:''}}
                                                 </a>
                                             </div>
                                         </div>

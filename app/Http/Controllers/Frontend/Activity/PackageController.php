@@ -77,10 +77,11 @@ class PackageController extends BackendBaseController
 
     public function show($slug)
     {
-        $this->page_method      = 'show';
-        $this->page_title       = $this->panel.' Details';
-        $data                   = $this->getCommonData();
-        $data['row']            = $this->model->where('slug',$slug)->first();
+        $this->page_method          = 'show';
+        $this->page_title           = $this->panel.' Details';
+        $data                       = $this->getCommonData();
+        $data['row']                = $this->model->where('slug',$slug)->first();
+        $data['related_activity']   = $this->model->active()->descending()->whereNotIn('id',[$data['row']->id])->where('package_category_id',$data['row']->package_category_id)->limit(6)->get();
 
         if(!$data['row']){
             abort(404);

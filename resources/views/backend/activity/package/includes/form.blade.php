@@ -12,9 +12,15 @@
         </div>
     </div>
     <div class="col-lg-12">
-        <div class="mb-3">
+        <div class="mb-2">
             {!! Form::label('title', 'Title', ['class' => 'form-label required']) !!}
             {!! Form::text('title', null,['class'=>'form-control','id'=>'title','placeholder'=>'Enter title']) !!}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="mb-3">
+            {!! Form::label('price', 'Price', ['class' => 'form-label']) !!}
+            {!! Form::text('price', null,['class'=>'form-control','id'=>'price','placeholder'=>'Enter price']) !!}
         </div>
     </div>
     <div class="col-lg-6">

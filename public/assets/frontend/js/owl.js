@@ -64,8 +64,8 @@ if($('.instagram_slider').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -121,8 +121,8 @@ if($('.slider-1-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -160,8 +160,8 @@ if($('.slider-2-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -203,8 +203,8 @@ if($('.slider-3-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -232,6 +232,48 @@ if($('.slider-3-grid').length){
   })
 }
 
+if($('.slider-3-gallery').length){
+    $('.slider-3-gallery').owlCarousel({
+        loop:false,
+        margin:30,
+        center:false,
+        dots:true,
+        nav:true,
+        rtl:false,
+        autoplayHoverPause:false,
+        autoplay: false,
+        singleItem: true,
+        smartSpeed: 1200,
+        navText: [
+            '<i class="fa fa-arrow-left-long"></i>',
+            '<i class="fa fa-arrow-right-long"></i>'
+        ],
+        responsive: {
+            0: {
+                items: 1,
+                center: false
+            },
+            480:{
+                items:1,
+                center: false
+            },
+            600: {
+                items: 1,
+                center: false
+            },
+            768: {
+                items: 2
+            },
+            992: {
+                items: 2
+            },
+            1200: {
+                items: 3
+            }
+        }
+    })
+}
+
 /*  Shop-Item-4-Grid-Slider-Owl-carousel  */
 if($('.slider-4-grid').length){
   $('.slider-4-grid').owlCarousel({
@@ -246,8 +288,8 @@ if($('.slider-4-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -292,8 +334,8 @@ if($('.slider-4-grid2').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-chevron-left"></i>',
-      '<i class="far fa-chevron-right"></i>'
+      '<i class="fa fa-chevron-left"></i>',
+      '<i class="fa fa-chevron-right"></i>'
     ],
     responsive: {
       0: {
@@ -338,8 +380,8 @@ if($('.slider-4-grid3').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -377,8 +419,8 @@ if($('.slider-5-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -430,8 +472,8 @@ if($('.slider-6-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -479,8 +521,8 @@ if($('.slider-7-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -535,8 +577,8 @@ if($('.slider-8-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -591,8 +633,8 @@ if($('.slider-10-grid').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {
@@ -647,8 +689,8 @@ if($('.bestseller_sidebar_slider').length){
     singleItem: true,
     smartSpeed: 1200,
     navText: [
-      '<i class="far fa-arrow-left-long"></i>',
-      '<i class="far fa-arrow-right-long"></i>'
+      '<i class="fa fa-arrow-left-long"></i>',
+      '<i class="fa fa-arrow-right-long"></i>'
     ],
     responsive: {
       0: {

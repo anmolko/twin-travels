@@ -82,7 +82,7 @@
                                     @foreach($top_nav_data as $nav)
                                         @if(!empty($nav->children[0]))
                                             <li class="visible_list">
-                                                <a class="list-item" href="#"><span class="title">{{ @$nav->name ?? @$nav->title }}</span></a>
+                                                <a class="list-item" href="/"><span class="title">{{ @$nav->name ?? @$nav->title }}</span></a>
                                                 <ul>
                                                     @foreach($nav->children[0] as $childNav)
                                                         <li>
