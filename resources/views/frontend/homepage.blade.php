@@ -302,8 +302,8 @@
                                 </div>
                                 <div class="blog-content">
                                     <div class="date">
-                                        <span class="month">{{date('M Y', strtotime($blog->created_at))}}</span>
                                         <span class="day">{{date('d', strtotime($blog->created_at))}}</span>
+                                        <span class="month">{{date('M Y', strtotime($blog->created_at))}}</span>
                                     </div>
                                     <a class="tag" href="{{ route('frontend.blog.category', $blog->blogCategory->slug) }}">{{ $blog->blogCategory->title ?? '' }}</a>
                                     <h6 class="title mt-1">

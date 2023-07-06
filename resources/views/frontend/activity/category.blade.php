@@ -5,7 +5,7 @@
 
     @include($view_path.'includes.search_breadcrumb', ['breadcrumb_image'=>'bread-bg.jpeg'])
 
-    <section class="pt0 pb90 bgc-f7">
+    <section class="pt0 pb90 bgc-f8">
         <div class="container">
             <div class="row gx-xl-5">
                 <div class="col-lg-4 d-none d-lg-block">

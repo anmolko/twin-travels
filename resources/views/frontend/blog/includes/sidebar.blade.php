@@ -1,74 +1,43 @@
-<div class="sidebar mb-0">
-    <div class="sidebar-widget">
-        <h3 class="title stroke-shape">Search Post</h3>
-        <div class="contact-form-action">
-            {!! Form::open(['route' => $base_route.'search', 'method'=>'GET', 'class'=>'search_blog_form']) !!}
-            <div class="input-box">
-                <div class="form-group mb-0">
-                    <input class="form-control pl-3" type="text" name="for" placeholder="Type your keywords...">
-                    <button class="search-btn" type="submit"><i class="la la-search"></i></button>
-                </div>
+<div class="blog-sidebar">
+    <div class="sidebar-widget mb30">
+        {!! Form::open(['route' => $base_route.'search', 'method'=>'GET', 'class'=>'search_blog_form']) !!}
+            <div class="search_area">
+                <input type="text" class="form-control" name="for" placeholder="Type your keywords...">
+                <label><span class="flaticon-search"></span></label>
             </div>
-            {!! Form::close() !!}
-        </div>
-    </div><!-- end sidebar-widget -->
+        {!! Form::close() !!}
+    </div>
     @if(count( $data['categories']) > 0)
-        <div class="sidebar-widget">
-            <h3 class="title stroke-shape">Categories</h3>
-            <div class="sidebar-list">
-                <ul class="list-items">
-                    @foreach($data['categories'] as $category)
-                        <li><i class="la la-dot-circle mr-2 text-color"></i><a href="{{ route($base_route.'category',$category->slug) }}">{{$category->title}} ({{$category->blogs_count}})</a></li>
-                    @endforeach
-                </ul>
-            </div>
-        </div><!-- end sidebar-widget -->
-    @endif
-    @if(count( $data['latest']) > 0)
-
-        <div class="sidebar-widget">
-            <h3 class="title stroke-shape">Latest Posts</h3>
-            <div class="tab-content" id="myTabContent">
-                @foreach($data['latest'] as $latest)
-                    <div class="card-item card-item-list recent-post-card">
-                        <div class="card-img">
-                            <a href="{{ route($module.'blog.show',$latest->slug) }}" class="d-block">
-                                <img class="lazy" data-src="{{ asset(imagePath($latest->image)) }}" alt="blog-img">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title"><a href="{{ route($module.'blog.show',$latest->slug) }}">
-                                    {{ $latest->title }}
-                                </a>
-                            </h3>
-                            <p class="card-meta">
-                                <span class="post__date">{{date('d M Y', strtotime($latest->created_at))}} </span>
-                            </p>
-                        </div>
-                    </div>
+        <div class="sidebar-widget mb30">
+            <h6 class="widget-title">Categories</h6>
+            <div class="category-list mt20">
+                @foreach($data['categories'] as $category)
+                    <a href="{{ route($base_route.'category',$category->slug) }}">{{$category->title}} ({{$category->blogs_count}})</a>
                 @endforeach
             </div>
         </div>
     @endif
-    <div class="sidebar-widget">
-        <h3 class="title stroke-shape">Follow & Connect</h3>
-        <ul class="social-profile">
-            @if(@$setting_data->facebook)
-                <li><a href="{{@$setting_data->facebook}}"><span class="fa-brands fa-facebook"></span></a></li>
-            @endif
-            @if(@$setting_data->youtube)
-                <li><a href="{{@$setting_data->youtube}}"><span class="fa-brands fa-youtube"></span></a></li>
 
-            @endif
-            @if(@$setting_data->instagram)
-                <li><a href="{{@$setting_data->instagram}}"><span class="fa-brands fa-instagram"></span></a></li>
-            @endif
-            @if(@$setting_data->linkedin)
-                <li><a href="{{@$setting_data->linkedin}}"><span class="fa-brands fa-linkedin"></span></a></li>
-            @endif
-            @if(!empty(@$setting_data->ticktock))
-                <li><a href="{{@$setting_data->ticktock}}"><span class="fa-brands fa-tiktok"></span></a></li>
-            @endif
-        </ul>
-    </div><!-- end sidebar-widget -->
-</div><!-- end sidebar -->
+    @if(count( $data['latest']) > 0)
+        <div class="sidebar-widget mb30">
+        <h6 class="widget-title">Latest Posts</h6>
+            @foreach($data['latest'] as $latest)
+                <div class="list-news-style d-flex align-items-center mt20 mb20">
+                    <div class="news-img flex-shrink-0">
+                        <img class="thumbnail-image lazy" data-src="{{ asset(imagePath($latest->image)) }}" alt="">
+                    </div>
+                    <div class="news-content flex-shrink-1 ms-3">
+                        <p class="new-text mb0 fz14">
+                            <a class="body-light-color" href="{{ route($module.'blog.show',$latest->slug) }}">
+                                {{ $latest->title }}
+                            </a>
+                        </p>
+                        <a class="body-light-color" href="{{ route($module.'blog.show',$latest->slug) }}">
+                            {{date('d M Y', strtotime($latest->created_at))}}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+</div>

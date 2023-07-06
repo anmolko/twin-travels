@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcumb-style1">
-                    <h2 class="title text-white">About Us</h2>
+                    <h2 class="title text-white">{{ $page_title }}</h2>
                     <div class="breadcumb-list">
                         <a href="/" class="text-white">Home</a>
                         @if($page_method !=='index')

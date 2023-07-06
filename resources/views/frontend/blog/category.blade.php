@@ -3,65 +3,46 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=>'team-cta-bg.jpg'])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=>'team-cta-bg.jpeg'])
 
-    <section class="card-area section--padding">
+    <section class="our-blog bgc-f8">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="filter-wrap margin-bottom-30px">
-                        <div class="filter-top d-flex align-items-center justify-content-between pb-4">
-                            <div>
-                                <h3 class="title font-size-24">{{ $data['category']->title }} : {{ count($data['rows']) }} posts  </h3>
-                                <p class="font-size-14 line-height-20 pt-1">Read our latest articles and find out what's happening !</p>
-                            </div>
-                        </div><!-- end filter-top -->
-                    </div><!-- end filter-wrap -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-            <div class="row">
+            <div class="row wow fadeInUp" data-wow-delay="300ms">
                 <div class="col-lg-8">
-                    <div class="row">
-
+                    <div class="row" data-wow-delay="300ms">
                         @foreach( $data['rows']  as $row)
-                            <div class="col-lg-6 responsive-column">
-                                <div class="card-item blog-card">
-                                    <div class="card-img">
-                                        <img class="lazy" data-src="{{ asset(imagePath($row->image)) }}" alt="">
-                                        <div class="post-format icon-element">
-                                            <i class="la la-photo"></i>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="post-categories">
-                                                <a href="{{ route($base_route.'category',$row->blogCategory->slug)}}" class="badge">{{$row->blogCategory->title ?? ''}}</a>
-                                            </div>
-                                            <h3 class="card-title line-height-26">
-                                                <a href="{{ route($base_route.'show',$row->slug)}}">
-                                                    {{ $row->title ?? '' }}
-                                                </a>
-                                            </h3>
-                                            <p class="card-meta">
-                                                <span class="post__date"> {{date('d M Y', strtotime($row->created_at))}}</span>
-                                            </p>
-                                        </div>
+                            <div class="col-6 col-lg-6">
+                                <div class="blog-style1">
+                                    <div class="blog-img">
+                                        <img class="w-100 lazy" data-src="{{ asset(imagePath($row->image))}}" alt="">
                                     </div>
-                                </div><!-- end card-item -->
+                                    <div class="blog-content">
+                                        <div class="date">
+                                            <span class="month">{{date('M Y', strtotime($row->created_at))}}</span>
+                                            <span class="day">{{date('d', strtotime($row->created_at))}}</span>
+                                        </div>
+                                        <a class="tag" href="{{ route('frontend.blog.category', $row->blogCategory->slug) }}">{{ $row->blogCategory->title ?? '' }}</a>
+                                        <h6 class="title mt-1">
+                                            <a href="{{ route('frontend.blog.show', $row->slug) }}">
+                                                {{ $row->title ?? '' }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="btn-box mt-3 text-center">
-                                {{ $data['rows']->links('vendor.pagination.simple-bootstrap-4') }}
-                            </div><!-- end btn-box -->
-                        </div><!-- end col-lg-12 -->
-                    </div><!-- end row -->
-                </div><!-- end col-lg-8 -->
+                        <div class="mbp_pagination text-center">
+                            {{ $data['rows']->links('vendor.pagination.default') }}
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4">
                     @include($view_path.'includes.sidebar')
-                </div><!-- end col-lg-4 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
+                </div>
+            </div>
+        </div>
     </section>
 
 @endsection

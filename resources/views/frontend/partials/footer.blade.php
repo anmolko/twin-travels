@@ -145,5 +145,7 @@
 <script src="{{ asset('assets/frontend/js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/common/lazyload.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/script.js') }}"></script>
+@yield('js')
+@stack('scripts')
 </body>
 </html>

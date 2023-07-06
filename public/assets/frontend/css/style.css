@@ -4442,7 +4442,7 @@ h2 {
 }
 
 .bsp_tags a {
-  background-color: rgba(235, 103, 83, 0.07);
+  background-color: rgb(172 198 239);
   border-radius: 60px;
   color: var(--headings-color);
   display: block;
@@ -6576,13 +6576,13 @@ textarea:focus {
 }
 
 /* blockquote Styles*/
-.blockquote-style1 {
+.blockquote-style1, blockquote {
   background-color: rgba(235, 103, 83, 0.07);
   border-left: 3px solid var(--headings-color);
   padding: 45px 60px 20px;
   position: relative;
 }
-.blockquote-style1 .fst-italic {
+.blockquote-style1 .fst-italic{
   max-width: 655px;
   width: 100%;
 }
@@ -10033,7 +10033,7 @@ input:focus-visible {
 }
 
 .bgc-thm3-light {
-  background-color: rgba(91, 187, 123, 0.15);
+  background-color: rgb(214 226 243);
 }
 
 .review-color {
@@ -10461,6 +10461,33 @@ input:focus-visible {
 
 .city-img img{
     border-radius: 12px 12px 12px 12px;
+}
+
+.thumbnail-image{
+    width: 90px;
+    height: 80px;
+    object-fit: cover;
+}
+
+
+.custom-description ul li, .custom-description ol li{
+    align-items: center;
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+.custom-description ul li:before, .custom-description ol li:before{
+    content: "\2713";
+    border-radius: 50%;
+    font-size: 8px;
+    height: 18px;
+    left: 0;
+    line-height: 18px;
+    position: absolute;
+    text-align: center;
+    width: 18px;
+    background-color: rgb(194 212 238);
+    color: #446ba6;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -44,7 +44,7 @@
     </div>
     <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
         <h4 class="title fz17 mb30">Description</h4>
-        <div class="text mb10">
+        <div class="text mb10 custom-description">
             {!! $data['row']->description !!}
         </div>
     </div>
@@ -67,7 +67,7 @@
     @if($data['row']->itinerary)
         <div class="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
             <h4 class="title fz17 mb30">Itinerary</h4>
-            <div class="text mb10">
+            <div class="text mb10 custom-description">
                 {!! $data['row']->itinerary !!}
             </div>
         </div>
