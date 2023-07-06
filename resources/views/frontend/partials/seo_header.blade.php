@@ -62,7 +62,7 @@
                             </div>
                             <!-- Responsive Menu Structure-->
                             <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
-                                <li class="visible_list"> <a class="list-item" href="#">
+                                <li class="visible_list"> <a class="list-item" href="/">
                                         <span class="title">Home</span></a>
                                 </li>
                                 @if(!empty($top_nav_data))

@@ -3,47 +3,42 @@
 
 @section('content')
 
-    @include($view_path.'includes.search_breadcrumb')
+    @include($view_path.'includes.search_breadcrumb', ['breadcrumb_image'=>'bread-bg.jpeg'])
 
-    <section class="card-area section--padding">
+    <section class="pt0 pb90 bgc-f7">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="filter-wrap margin-bottom-30px">
-                        <div class="filter-top d-flex align-items-center justify-content-between pb-4">
-                            <div>
-                                <h3 class="title font-size-24">{{ count($data['rows']) }} Tours found</h3>
-                                <p class="font-size-14 line-height-20 pt-1">Your search query results are shown below !</p>
-                            </div>
-                        </div><!-- end filter-top -->
-                    </div><!-- end filter-wrap -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="row gx-xl-5">
+                <div class="col-lg-4 d-none d-lg-block">
+                    @include($view_path.'includes.sidebar')
+                </div>
+                <div class="col-lg-8">
                     <div class="row">
                         @foreach($data['rows'] as $package)
-                            <div class="col-lg-4 responsive-column ">
-                                <div class="card-item">
-
-                                    <div class="card-img">
-                                        <a href="{{ route('frontend.activity.show',$package->slug) }}" class="d-block">
-                                            <img class="lazy" data-src="{{ asset(imagePath($package->image)) }}"  alt=""/>
-                                        </a>
-                                        <span class="badge badge-ribbon">
-                                            <a href="{{ route('frontend.activity.category', $package->packageCategory->slug) }}" class="text-white">{{ $package->packageCategory->title ?? '' }}</a>
-                                        </span>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="listing-style1">
+                                    <div class="list-thumb">
+                                        <img class="w-100 lazy" data-src="{{ asset(imagePath($package->image)) }}" alt="">
                                         @if($package->package_ribbon_id)
-                                            <div class="ribbon {{ getRibbonClass($package->packageRibbon->key) }} ribbon-shape">{{$package->packageRibbon->title ?? ''}}</div>
+                                            <div class="list-tag fz12 {{$package->packageRibbon->key ?? ''}}"><span class="flaticon-electricity me-2"></span>{{$package->packageRibbon->title ?? ''}}</div>
                                         @endif
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-price d-flex align-items-center justify-content-between">
-                                            <h3 class="card-title"><a href="{{ route('frontend.activity.show',$package->slug) }}">{{ $package->title ?? '' }}</a></h3 class="card-title">
-                                            <span class="tour-hour"><i class="la la-globe mr-1"></i>{{ $package->country->title }}</span>
+                                        <div class="list-price">
+                                            <a href="{{ route('frontend.activity.category', $package->packageCategory->slug) }}">
+                                                {{ $package->packageCategory->title }} {{ $package->price ?  ' / ' . $package->price:''}}
+                                            </a>
                                         </div>
                                     </div>
-                                </div><!-- end card-item -->
+                                    <div class="list-content">
+                                        <p class="list-text">
+                                            <i class="fal fa-earth mr-1"></i>
+                                            {{ $package->country->title }}
+                                        </p>
+                                        <h6 class="list-title">
+                                            <a href="{{ route('frontend.activity.show',$package->slug) }}">
+                                                {{ $package->title ?? '' }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
