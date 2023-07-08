@@ -3,11 +3,11 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>@yield('title') | {{ucwords(@$setting_data->website_name ?? 'Advanced Travels')}}</title>
+    <title>@yield('title') | {{ucwords(@$setting_data->title ?? 'Twins Travels')}}</title>
 
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ $setting_data->website_description ?? 'Advanced Travels' }}">
+    <meta name="description" content="{{ $setting_data->description ?? 'Twins Travels' }}">
     <meta name="author" content="Canosoft Technology" />
     <!-- App favicon -->
     <link rel="shortcut icon" type="image/x-icon"  href="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">

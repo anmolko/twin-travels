@@ -9,14 +9,14 @@
     <link rel="canonical" href="https://twinstravels.com.np" />
 
     @if (\Request::is('/'))
-        <title> {{ucwords($setting_data->website_name ?? 'Advanced Travels')}}</title>
+        <title> {{ucwords($setting_data->title ?? 'Twins Travel')}}</title>
     @else
-        <title>@yield('title') |  {{ucwords($setting_data->website_name ?? 'Advanced Travels')}} </title>
+        <title>@yield('title') |  {{ucwords($setting_data->title ?? 'Twins Travel')}} </title>
     @endif
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ $setting_data->favicon ?  asset(imagePath($setting_data->favicon)) : ''}}">
 
-    <meta property="og:title" content="{{ucwords(@$setting_data->meta_title ?? 'Advanced Travels')}}" />
+    <meta property="og:title" content="{{ucwords(@$setting_data->meta_title ?? 'Twins Travel')}}" />
     <meta property="og:type" content="Tour and Travel" />
     <meta property="og:url" content="https://twinstravels.com.np" />
     <meta property="og:site_name" content="Twins Travel" />

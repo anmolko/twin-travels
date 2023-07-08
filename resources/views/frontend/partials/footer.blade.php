@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="text-center text-lg-start">
-                    <p class="copyright-text text-gray ff-heading">© 2023 <span class="text-white">{{$setting_data->title ?? 'Twin Travels'}}</span> - by
+                    <p class="copyright-text text-gray ff-heading">© 2023 <span class="text-white">{{$setting_data->title ?? 'Twins Travels'}}</span> - by
                         <a href="https://www.canosoft.com.np/" class="text-white" target="_blank">Canosoft Techonology</a>  - All rights reserved</p>
                 </div>
             </div>

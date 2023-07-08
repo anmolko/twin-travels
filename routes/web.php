@@ -30,6 +30,8 @@ Route::any('/register', function() {
 Route::get('/contact-us', [HomePageController::class, 'contact'])->name('contact-us');
 Route::post('/contact/message', [HomePageController::class, 'contactStore'])->name('contact-us.store');
 
+Route::get('/get-fields', [HomePageController::class, 'getFieldType'])->name('flight-field');
+Route::post('/book-flight', [HomePageController::class, 'storeFlightBookInfo'])->name('book-flight');
 
 Route::get('/activity', [PackageController::class, 'index'])->name('activity.index');
 Route::post('/activity/search', [PackageController::class, 'search'])->name('activity.search');

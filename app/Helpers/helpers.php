@@ -295,7 +295,7 @@ if (!function_exists('get_page_section_icons')) {
         return $icon;
     }
 
-    if (! function_exists('getYoutubeThumbnail')) {
+if (! function_exists('getYoutubeThumbnail')) {
         /**
          * returns youtube thumbnail based on its link
          *
@@ -316,6 +316,18 @@ if (!function_exists('get_page_section_icons')) {
             $youtubeVideoID = $video_id[0];
             return "https://img.youtube.com/vi/".$youtubeVideoID."/hqdefault.jpg";
         }
+    }
+}
+
+if (! function_exists('getFlightList')) {
+    /**
+     * returns list of flights
+     *
+     * @return array
+     */
+    function getFlightList()
+    {
+        return ['kathmandu'=>'Kathmandu','biratnagar'=>'Biratnagar', 'pokhara'=>'Pokhara', 'bhadrapur'=>'Bhadrapur', 'bhairahawa'=>'Bhairahawa', 'bharatpur'=>'Bharatpur', 'dhangadi'=>'Dhangadi', 'simara'=>'Simara', 'tumlingtar'=>'Tumlingtar', 'rajbiraj'=>'Rajbiraj', 'janakpur'=>'Janakpur', 'mountain_flight'=>'Mountain Flight', 'nepalgunj'=>'Nepalgunj'];
     }
 }
 

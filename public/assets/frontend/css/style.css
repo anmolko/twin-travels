@@ -10545,4 +10545,8 @@ input:focus-visible {
     height: calc(100% - 15px);
     margin-bottom: 15px;
 }
+
+.capitalize{
+    text-transform: capitalize;
+}
 /*# sourceMappingURL=style.css.map */

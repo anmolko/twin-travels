@@ -293,7 +293,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 m-auto wow fadeInUp" data-wow-delay="00ms">
-                        <div class="main-title text-start text-md-center">
+                        <div class="main-title2 text-start text-md-center">
                             <h2 class="title">From Our Blog</h2>
                             <p class="paragraph">Read our recent news and articles</p>
                         </div>
@@ -325,9 +325,10 @@
             </div>
         </section>
     @endif
-
+    @include($view_path.'includes.book-flight')
 @endsection
 
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>
+    @include($view_path.'includes.script')
 @endsection

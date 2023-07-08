@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Backend\BackendBaseController;
+use App\Http\Requests\Frontend\BookFlightRequest;
 use App\Http\Requests\Frontend\CustomerInquiryRequest;
+use App\Mail\ContactDetail;
 use App\Models\Backend\Activity\Country;
 use App\Models\Backend\CustomerInquiry;
 use App\Models\Backend\Homepage\Slider;
@@ -16,7 +18,9 @@ use App\Models\Backend\Activity\Package;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use function Termwind\render;
 
 class HomePageController extends BackendBaseController
 {
@@ -43,7 +47,7 @@ class HomePageController extends BackendBaseController
      */
     public function index()
     {
-        $data                       = [];
+        $data                       = $this->getCommonData();
         $data['sliders']            = Slider::active()->descending()->get();
         $data['all_packages']       = Package::with('packageRibbon')->active()->descending()->get();
         $data['testimonials']       = Testimonial::active()->descending()->limit(8)->get();
@@ -51,10 +55,19 @@ class HomePageController extends BackendBaseController
         $data['services']           = Service::active()->descending()->get();
         $data['blogs']              = Blog::active()->descending()->latest()->take(3)->get();
         $data['search_countries']   = $this->getCountries();
-        $data['search_categories']  =$this->getPackageCategory();
+        $data['search_categories']  = $this->getPackageCategory();
 
 
         return view($this->loadView($this->view_path.'homepage'), compact('data'));
+    }
+
+    public function getCommonData(): array
+    {
+        $data['search_countries']   = $this->getCountries();
+        $data['search_categories']  = $this->getPackageCategory();
+        $data['flight_list']        = getFlightList();
+
+        return $data;
     }
 
 
@@ -68,7 +81,45 @@ class HomePageController extends BackendBaseController
         return view($this->loadView($this->view_path.'page.contact_us'), compact('data'));
     }
 
+    public function getFieldType()
+    {
+        $value   = \request()->type;
+        $data    = $this->getCommonData();
+
+        if($value){
+            $rendered_view = view($this->view_path.'partials.national', compact('data'))->render();
+        }else{
+            $rendered_view = view($this->view_path.'partials.international')->render();
+        }
+
+       return response()->json(['rendered_view'=>$rendered_view]);
+    }
+
     public function contactStore(CustomerInquiryRequest $request)
+    {
+        $data['setting_data']   = Setting::first();
+        $data['title']          = 'Contact us response';
+
+        DB::beginTransaction();
+        try {
+            CustomerInquiry::create($request->all());
+
+//            if(!app()->environment('local')){
+//                Mail::to($data['setting_data']->email)->send(new ContactDetail($data));
+//            }
+
+            Session::flash('success','Your message was submitted successfully');
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Session::flash('error','Your message could not relayed at the moment. Something went wrong.');
+        }
+
+        return response()->json(route('frontend.contact-us'));
+    }
+
+    public function storeFlightBookInfo(BookFlightRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -80,7 +131,7 @@ class HomePageController extends BackendBaseController
             Session::flash('error','Your message could not relayed at the moment. Something went wrong.');
         }
 
-        return response()->json(route('frontend.contact-us'));
+        return response()->json(route('frontend.home'));
     }
 
 }
