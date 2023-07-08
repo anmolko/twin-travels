@@ -6,7 +6,7 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=>'team-cta-bg.jpeg'])
+    @include($view_path.'includes.show_breadcrumb')
 
     <section class="pt60 pb90 bgc-f8">
         <div class="container">
