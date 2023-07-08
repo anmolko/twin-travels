@@ -13,8 +13,9 @@
                         </div>
                     </div>
                     <div class="social-widget">
-                        <h6 class="text-white mb20">Follow us on social media</h6>
-                        <div class="social-style1">
+                        @if(!empty(@$setting_data->facebook) || !empty(@$setting_data->youtube) || !empty(@$setting_data->instagram) || !empty(@$setting_data->linkedin) || !empty(@$setting_data->ticktock))
+                            <h6 class="text-white mb20">Follow us on social media</h6>
+                            <div class="social-style1">
                             @if(@$setting_data->facebook)
                                 <a href="{{@$setting_data->facebook}}" class="me-3">
                                     <i class="fa-brands fa-facebook-f"></i>
@@ -41,6 +42,7 @@
                                 </a>
                             @endif
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@
                                 <p class="info-title">Call us</p>
                                 <h6 class="info-phone">
                                     <a href="tel:{{$setting_data->phone ?? $setting_data->mobile ?? $setting_data->whatsapp ?? $setting_data->viber ?? ''}}">
-                                        tel:{{$setting_data->phone ?? $setting_data->mobile ?? $setting_data->whatsapp ?? $setting_data->viber ?? ''}}
+                                        {{$setting_data->phone ?? $setting_data->mobile ?? $setting_data->whatsapp ?? $setting_data->viber ?? ''}}
                                     </a>
                                 </h6>
                             </div>

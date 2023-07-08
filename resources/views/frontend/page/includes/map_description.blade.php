@@ -1,33 +1,26 @@
-<section class="about-area section--padding overflow-hidden">
+<div class="cta-banner mx-auto maxw1600 pt10 bdrs12 position-relative mx20-lg px20-sm">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="about-content pr-5">
-                    <div class="section-heading">
-                        <h4 class="font-size-16 pb-2">{{ $element->first()->subtitle ?? '' }}</h4>
-                        <h2 class="sec__title">{{ $element->first()->title ?? '' }}</h2>
-                        <p class="sec__desc pt-4 pb-2 text-justify">
-                            {{ $element->first()->description ?? '' }}
-                        </p>
-
-                    </div>
-                    @if($element->first()->button_link)
-                        <div class="btn-box pt-4">
-                            <a href="{{$element->first()->button_link}}" class="theme-btn">{{ $element->first()->button ?? 'Learn more' }} <i class="la la-arrow-right ml-1"></i></a>
-                        </div>
+        <div class="row align-items-start align-items-xl-center">
+            <div class="col-md-10 col-lg-7 col-xl-5">
+                <div class="position-relative mb40 mb0-sm wow fadeInRight" data-wow-delay="300ms">
+                    @if($setting_data && $setting_data->google_map)
+                            <iframe src="{{ $setting_data->google_map }}" style="border:0;width: 600px;height: 500px;" allowfullscreen="" loading="lazy" class="pt40 pl50"></iframe>
                     @endif
                 </div>
             </div>
-
-            <!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                @if($setting_data && $setting_data->google_map)
-                    <div class="image-box about-img-box" style="height: 600px;">
-                        <iframe src="{{ $setting_data->google_map }}" style="border:0;width: 100%;height: 100%;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="col-md-8 col-lg-5 col-xl-6 offset-xl-1">
+                <div class="about-box-1 pe-4 mt10 mt0-lg mb30-lg wow fadeInLeft main-title2" data-wow-delay="300ms" style="margin-bottom: 0px;">
+                    <h2 class="title">{{ $element->first()->title ?? '' }}</h2>
+                    <p class="paragraph">{{ $element->first()->subtitle ?? '' }}</p>
+                    <div class="text mb25 mb10-md fz16 text-justify">
+                        {{ $element->first()->description ?? '' }}
                     </div>
-                @endif
+                    @if($element->first()->button_link)
+                        <a href="{{$element->first()->button_link}}" class="ud-btn btn-dark">{{ $element->first()->button ?? 'Explore more' }}<i class="fal fa-arrow-right-long"></i></a>
+                    @endif
+                </div>
             </div>
-
         </div>
     </div>
-</section>
+</div>
+

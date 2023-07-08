@@ -9,6 +9,7 @@ use App\Models\Backend\Page\Page;
 use App\Models\Backend\Page\PageSection;
 use App\Models\Backend\Page\PageSectionElement;
 use App\Models\Backend\Page\PageSectionGallery;
+use App\Services\PageSectionElementsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,68 +54,28 @@ class PageSectionElementController extends BackendBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param PageSectionElementRequest $request
+     * @param Request $request
      * @return JsonResponse
      */
-    public function store(PageSectionElementRequest $request)
+    public function store(Request $request, PageSectionElementsService $pageSectionElementsService)
     {
-        $section_name = $request['section_name'];
-        $section      = ucfirst(str_replace('_',' ',$section_name));
-        $section_id   = $request['page_section_id'];
+        $data                 = [];
+        $data['section_name'] = $request['section_name'];
+        $data['section']      = ucfirst(str_replace('_',' ',$data['section_name']));
+        $data['section_id']   = $request['page_section_id'];
 
         DB::beginTransaction();
         try {
             $request->request->add(['created_by' => auth()->user()->id ]);
             $request->request->add(['status' => true ]);
 
-            if($section_name == 'faq') {
-                $faq_num   = $request['list_number_1'];
-                for ($i=0;$i<$faq_num;$i++){
-//                    $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
-                    $heading     =  array_key_exists($i, $request->input('title')) ? $request->input('title')[$i] : null;
+            $pageSectionElementsService->syncSectionElements($request, $data);
 
-                    $data=[
-                        'page_section_id'     => $section_id,
-                        'title'               => $heading,
-                        'list_title'          => $request['list_title'][$i],
-                        'list_description'    => $request['list_description'][$i],
-                        'status'              => $request['status'],
-                        'created_by'          => $request['created_by'],
-                    ];
-                    $this->model->create($data);
-                }
-            }elseif ($section_name == 'flash_card'){
-                $flash_card_num   = $request['list_number_1'];
-                for ($i=0;$i<$flash_card_num;$i++){
-                    $heading     =  array_key_exists($i, $request->input('title')) ? $request->input('title')[$i] : null;
-                    $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
-
-                    $data=[
-                        'page_section_id'     => $section_id,
-                        'title'               => $heading,
-                        'subtitle'            => $subheading,
-                        'list_title'          => $request['list_title'][$i],
-                        'list_description'    => $request['list_description'][$i],
-                        'status'              => $request['status'],
-                        'created_by'          => $request['created_by'],
-                    ];
-                    $this->model->create($data);
-                }
-            }
-            else{
-                if ($request->hasFile('image_input')) {
-                    $image_name = $this->uploadImage($request->file('image_input'), '600','550');
-                    $request->request->add(['image' => $image_name]);
-                }
-                $this->model->create($request->all());
-            }
-
-            Session::flash('success',$section.' was created successfully');
+            Session::flash('success',$data['section'].' was created successfully');
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
-            Session::flash('error',$section.' was not created. Something went wrong.');
+            Session::flash('error',$data['section'].' was not created. Something went wrong.');
         }
 
         return response()->json(route($this->module.'section-element.show',$request['page_id']));
@@ -123,18 +84,18 @@ class PageSectionElementController extends BackendBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param ServiceRequest $request
+     * @param PageSectionElementRequest $request
      * @param int $id
      * @return JsonResponse
      */
-    public function update(PageSectionElementRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data['row']    = $this->model->find($id);
-        $section        = ucfirst(str_replace('_',' ',$request['section_name']));
+        $data['row']        = $this->model->find($id);
+        $data['section']    = ucfirst(str_replace('_',' ',$request['section_name']));
         DB::beginTransaction();
         try {
             if($request->hasFile('image_input')){
-                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'600','550');
+                $image_name = $this->updateImage($request->file('image_input'),$data['row']->image,'550','450');
                 $request->request->add(['image'=>$image_name]);
             }
             $request->request->add(['status' => true ]);
@@ -142,20 +103,21 @@ class PageSectionElementController extends BackendBaseController
 
             $data['row']->update($request->all());
 
-            Session::flash('success',$section.' was updated successfully');
+            Session::flash('success',$data['section'].' was updated successfully');
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            Session::flash('error',$section.' was not updated. Something went wrong.');
+            Session::flash('error',$data['section'].' was not updated. Something went wrong.');
         }
 
         return response()->json(route($this->module.'section-element.show',$request['page_id']));
     }
 
-    public function multipleSectionUpdate(PageSectionElementRequest $request){
-        $section_name = $request['section_name'];
-        $section      = ucfirst(str_replace('_',' ',$section_name));
-        $section_id   = $request['page_section_id'];
+    public function multipleSectionUpdate(Request $request, PageSectionElementsService $pageSectionElementsService){
+
+        $data['section_name'] = $request['section_name'];
+        $data['section']      = ucfirst(str_replace('_',' ',$data['section_name']));
+        $data['section_id']   = $request['page_section_id'];
 
         DB::beginTransaction();
         try {
@@ -163,63 +125,13 @@ class PageSectionElementController extends BackendBaseController
             $request->request->add(['updated_by' => auth()->user()->id ]);
             $request->request->add(['status' => true ]);
 
-            if($section_name == 'faq') {
-                $faq_num                    = $request['list_number_1'];
-                $faq_section                = PageSection::find($section_id);
-                $faq_section_elements_id    = $faq_section->pageSectionElements->pluck('id')->toArray();
-                for ($i=0;$i<$faq_num;$i++){
-                    $heading     =  array_key_exists($i, $request->input('title')) ? $request->input('title')[$i] : null;
-//                    $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
+            $pageSectionElementsService->updateMultipleSectionElements($request, $data);
 
-                    $data=[
-                        'page_section_id'     => $section_id,
-                        'title'               => $heading,
-                        'list_title'          => $request['list_title'][$i],
-                        'list_description'    => $request['list_description'][$i],
-                        'status'              => $request['status'],
-                    ];
-
-                    if($request['id'][$i]){
-                        $data['updated_by'] = $request['updated_by'];
-                        $this->model->find($request['id'][$i])->update($data);
-                    }else{
-                        $data['created_by'] = $request['created_by'];
-                        $this->model->create($data);
-                    }
-                }
-                foreach ($faq_section_elements_id as $value){
-                    if(!in_array($value,$request->input('id'))){
-                        $this->model->find($value)->forceDelete();
-                    }
-                }
-            }
-            else if($section_name == 'flash_card'){
-                $flash_card_num   = $request['list_number_1'];
-                for ($i=0;$i<$flash_card_num;$i++){
-                    $heading     =  array_key_exists($i, $request->input('title')) ? $request->input('title')[$i] : null;
-                    $subheading  =  array_key_exists($i, $request->input('subtitle')) ? $request->input('subtitle')[$i] : null;
-                    $data=[
-                        'page_section_id'     => $section_id,
-                        'title'               => $heading,
-                        'subtitle'            => $subheading,
-                        'list_title'          => $request['list_title'][$i],
-                        'list_description'    => $request['list_description'][$i],
-                        'status'              => $request['status'],
-                        'updated_by'          => $request['updated_by'],
-                    ];
-                    $this->model->find($request['id'][$i])->update($data);
-                }
-
-            }
-
-
-
-            Session::flash('success',$section.' was updated successfully');
+            Session::flash('success',$data['section'].' was updated successfully');
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
-            Session::flash('error',$section.' was not updated. Something went wrong.');
+            Session::flash('error',$data['section'].' was not updated. Something went wrong.');
         }
 
         return response()->json(route($this->module.'section-element.show',$request['page_id']));

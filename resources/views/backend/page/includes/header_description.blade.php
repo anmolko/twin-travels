@@ -18,8 +18,8 @@
 
                     <div class="col-lg-12 mt-3">
                         <div class="mb-1">
-                            <label class="form-label required">Title </label>
-                            <input type="text" class="form-control" name="title" value="{{$header_description->title ?? null}}" maxlength="35" required>
+                            <label class="form-label">Title </label>
+                            <input type="text" class="form-control" name="subtitle" value="{{$header_description->subtitle ?? null}}" maxlength="100" required>
                             <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                             <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                             <input type="hidden" class="form-control" value="{{ $data['row']->id }}" name="page_id" required>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="mb-1 mt-2 editor">
-                            <label class="form-label required"> Description <span class="text-danger">* write 700 characters only</span></label>
+                            <label class="form-label required"> Description </label>
                             <textarea class="form-control ck-editor" maxlength="1200" rows="14" name="description" id="header_editor" required>{!! $header_description->description ?? null !!}</textarea>
                             <div class="invalid-feedback">
                                 Please write the small summary for basic section.

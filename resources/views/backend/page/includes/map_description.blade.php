@@ -40,14 +40,14 @@
                     <div class="col-lg-12">
                         <div class="mb-1 mt-2">
                             <label class="form-label required"> Description <span class="text-danger">* write 900 characters only</span></label>
-                            <textarea class="form-control" maxlength="900" rows="14" name="description" id="basic_editor" required>{!! $map_description->description ?? null !!}</textarea>
+                            <textarea class="form-control" maxlength="950" rows="14" name="description" id="basic_editor" required>{!! $map_description->description ?? null !!}</textarea>
                             <div class="invalid-feedback">
                                 Please write the small summary for basic section.
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="mb-1">
+                        <div class="mb-1 mt-2">
                             <label>Button Text </label>
                             <input type="text" maxlength="20" class="form-control" value="{{@$map_description->button ?? null}}" name="button">
                             <div class="invalid-feedback">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="mb-1">
+                        <div class="mb-1 mt-2">
                             <label>Button Link </label>
                             <input type="text" class="form-control" value="{{@$map_description->button_link ?? null}}" name="button_link">
                             <div class="invalid-feedback">

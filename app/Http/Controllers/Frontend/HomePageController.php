@@ -46,7 +46,7 @@ class HomePageController extends BackendBaseController
         $data                       = [];
         $data['sliders']            = Slider::active()->descending()->get();
         $data['all_packages']       = Package::with('packageRibbon')->active()->descending()->get();
-        $data['testimonials']       = Testimonial::active()->descending()->get();
+        $data['testimonials']       = Testimonial::active()->descending()->limit(8)->get();
         $data['countries']          = Country::active()->has('packages')->withCount('packages')->descending()->get();
         $data['services']           = Service::active()->descending()->get();
         $data['blogs']              = Blog::active()->descending()->latest()->take(3)->get();

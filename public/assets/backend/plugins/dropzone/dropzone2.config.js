@@ -52,11 +52,15 @@ Dropzone.options.myDropzone2 = {
                         total_photos_counter2--;
                         $("#counter2").text("# " + total_photos_counter2);
                         // alert(data.success +" Image has been successfully removed!");
-                        toastr.options = {
-                            "closeButton": true,
-                            "progressBar": true
-                        }
-                        toastr.success(data.success + " Image has been successfully removed!");
+                        Toastify({
+                            newWindow: !0,
+                            text: "Image has been successfully removed!",
+                            gravity: 'top',
+                            position: 'right',
+                            stopOnFocus: !0,
+                            duration: 5000,
+                            close: "close",
+                            className: "bg-success mt-5" }).showToast();
                     },
                     error: function(e) {
                         $('.invalid-feedback').show();

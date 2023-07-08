@@ -1,8 +1,10 @@
 @extends('frontend.layouts.master')
 @section('title') {{ $page_title }} @endsection
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/magnific-popup.css') }}" />
+@endsection
 @section('content')
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'team-cta-bg.jpg', 'page_image'=> $data['row']->image])
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'team-cta-bg.jpeg', 'page_image'=> $data['row']->image])
 
     @if($data['section_elements'])
         @foreach($data['section_elements'] as $index=>$element)
@@ -24,7 +26,7 @@
             @if($index == 'map_description' && count($element)>0)
                 @include($base_route.'includes.map_description')
             @endif
-            @if($index == 'gallery' && count($element)>0)
+            @if($index == 'gallery')
                 @include($base_route.'includes.gallery')
             @endif
         @endforeach

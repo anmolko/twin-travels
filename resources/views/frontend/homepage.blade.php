@@ -68,8 +68,8 @@
             </div>
         </section>
 
-        <!-- Explore Apartment -->
-        <section class="bgc-f7">
+        @if(count($data['all_packages'])>0)
+            <section class="bgc-f7">
             <div class="container">
                 <div class="row align-items-center wow fadeInUp" data-wow-delay="00ms">
                     <div class="col-lg-9">
@@ -122,6 +122,7 @@
                 </div>
             </div>
         </section>
+        @endif
 
         <section class="cta-banner4 d-flex align-items-center" data-stellar-background-ratio="0.1" style="background-position: 50% 4.84063px;">
             <div class="container">
@@ -138,6 +139,7 @@
                 </div>
             </div>
         </section>
+
 
         @if(count($data['services'])>0)
             <section class="pb30 pb30-md">
@@ -211,41 +213,45 @@
         @endif
 
         @if(count($data['testimonials'])>0)
-            <section class="pb100 pb50-md bgc-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="00ms">
-                            <div class="main-title">
-                                <h2 class="title text-white">People Love Living with Realton</h2>
-                                <p class="paragraph text-white">Aliquam lacinia diam quis lacus euismod</p>
+            <section class="our-testimonial p-0 bgc-dark">
+                <div class="cta-banner2 bgc-f7 maxw1600 mx-auto pt60 pt40-md pb110 pb60-md bdrs12 position-relative">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 mx-auto wow fadeInUp" data-wow-delay="300ms">
+                                <div class="main-title text-center">
+                                    <h2 class="text-grey">Our Testimonials</h2>
+                                    <p class="paragraph text-grey">See what people say about us</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="testimonial-slider navi_pagi_top_right slider-3-grid owl-carousel owl-theme wow fadeInUp" data-wow-delay="300ms">
-                                @foreach($data['testimonials'] as $testimonial)
-                                    <div class="item">
-                                        <div class="testimonial-style1 position-relative">
-                                            <div class="testimonial-content">
-    {{--                                            <h5 class="title">Great Work</h5>--}}
-                                                <span class="icon fas fa-quote-left"></span>
-                                                <p class="text">
-                                                    {{ $testimonial->description }}
-                                                </p>
-                                            </div>
-                                            <div class="thumb d-flex align-items-center">
-                                                <div class="flex-shrink-0">
-                                                    <img class="wa" src="{{ asset(imagePath($testimonial->image))}}" style="border-radius: 55px;" alt="">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">{{ $testimonial->title ?? '' }}</h6>
-                                                    <p class="mb-0">{{ $testimonial->position ?? '' }}</p>
+                        <div class="row">
+                            <div class="col-lg-8 m-auto wow fadeInUp" data-wow-delay="500ms">
+                                <div class="testimonial-style2">
+                                    <div class="tab-content" id="pills-tabContent">
+                                        @foreach($data['testimonials'] as $index=>$testimonial)
+                                            <div class="tab-pane fade {{ $loop->first ? 'show active':'' }}" id="pills-{{$index}}" role="tabpanel" aria-labelledby="pills-{{$index}}-tab">
+                                                <div class="testi-content text-center">
+                                                    <span class="icon fas fa-quote-left"></span>
+                                                    <h4 class="testi-text text-grey">
+                                                        {{ $testimonial->description }}
+                                                    </h4>
+                                                    <h5 class="name text-grey">{{ $testimonial->title ?? '' }}</h5>
+                                                    <p class="design text-grey">{{ $testimonial->position ?? '' }}</p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                    <div class="tab-list position-relative">
+                                        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+                                            @foreach($data['testimonials'] as $index=>$testimonial)
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link {{ $loop->first ? 'active':'' }}" id="pills-{{$index}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$index}}" type="button" role="tab" aria-controls="pills-{{$index}}">
+                                                        <img src="{{ asset(imagePath($testimonial->image))}}" style="border-radius: 55px;" alt=""></button>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -318,7 +324,8 @@
                 </div>
             </div>
         </section>
-        @endif
+    @endif
+
 @endsection
 
 @section('js')

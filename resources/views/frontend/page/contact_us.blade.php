@@ -5,150 +5,132 @@
 
 @section('content')
 
-    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'bread-bg6.jpg'])
-    <section class="contact-area section--padding">
+    @include($module.'includes.breadcrumb',['breadcrumb_image'=> 'bread-bg8.jpeg'])
+
+
+    <section class="pt-60 pb90 our-ui-elements">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="form-box">
-                        <div class="form-title-wrap">
-                            <h3 class="title">We'd love to hear from you</h3>
-                            <p class="font-size-15">Send us a message and we'll respond as soon as possible</p>
-                        </div><!-- form-title-wrap -->
-                        <div class="form-content ">
-                            <div class="contact-form-action">
-                                 {!! Form::open(['route' => $module.'contact-us.store', 'method'=>'POST', 'class'=>'row submit_form']) !!}
-                                <div class="col-lg-6 responsive-column">
-
-                                    <div class="input-box">
-                                        <label class="label-text required">Your Name <span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <span class="la la-user form-icon"></span>
-                                            <input class="form-control" type="text" name="name" placeholder="Your name">
-                                        </div>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
-                                <div class="col-lg-6 responsive-column">
-                                    <div class="input-box">
-                                        <label class="label-text">Your Email</label>
-                                        <div class="form-group">
-                                            <span class="la la-envelope-o form-icon"></span>
-                                            <input class="form-control" type="email" name="email" placeholder="Email address">
-                                        </div>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
-                                <div class="col-lg-6 responsive-column">
-                                    <div class="input-box">
-                                        <label class="label-text required">Your Phone <span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <span class="la la-phone form-icon"></span>
-                                            <input class="form-control" type="text" name="phone" placeholder="Phone number">
-                                        </div>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
-                                <div class="col-lg-6 responsive-column">
-                                    <div class="input-box">
-                                        <label class="label-text">Subject </label>
-                                        <div class="form-group">
-                                            <span class="la la-star-o form-icon"></span>
-                                            <input class="form-control" type="text" name="subject" placeholder="Enter subject">
-                                            <input class="form-control" type="hidden" name="type" value="contact form inquiry">
-                                        </div>
-                                    </div>
-                                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="home8-contact-form default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white">
+                        <h4 class="form-title mb25">Send us a message.</h4>
+                        {!! Form::open(['route' => $module.'contact-us.store', 'method'=>'POST', 'class'=>'form-style1 submit_form']) !!}
+                            <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="input-box">
-                                        <label class="label-text">Message <span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <span class="la la-pencil form-icon"></span>
-                                            <textarea class="message-control form-control" name="message" placeholder="Write message"></textarea>
-                                        </div>
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw600 mb10">Your Name</label>
+                                        <input class="form-control" type="text" name="name" placeholder="Your name">
                                     </div>
-                                </div><!-- end col-lg-12 -->
-                                <div class="col-lg-12">
-                                    <div class="btn-box">
-                                        <button type="submit" class="theme-btn">Send Message</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw600 mb10">Your Phone</label>
+                                        <input class="form-control" type="text" name="phone" placeholder="Phone number">
                                     </div>
-                                </div><!-- end col-lg-12 -->
-                                {!! Form::close() !!}
-                            </div><!-- end contact-form-action -->
-                        </div><!-- end form-content -->
-                    </div><!-- end form-box -->
-                </div><!-- end col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="form-box">
-                        <div class="form-title-wrap">
-                            <h3 class="title">Contact Us</h3>
-                        </div><!-- form-title-wrap -->
-                        <div class="form-content">
-                            <div class="address-book">
-                                <ul class="list-items contact-address">
-                                    <li>
-                                        <i class="la la-map-marker icon-element"></i>
-                                        <h5 class="title font-size-16 pb-1">Address</h5>
-                                        <p class="map__desc">
-                                            {{$data['setting_data']->address ?? ''}}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i class="la la-phone icon-element"></i>
-                                        <h5 class="title font-size-16 pb-1">Phone</h5>
-                                        <p class="map__desc">Telephone:
-                                            <a href="tel:{{$data['setting_data']->phone ?? ''}}">
-                                                {{$data['setting_data']->phone ?? ''}}
-                                            </a>
-                                        </p>
-                                        <p class="map__desc">Mobile:
-                                            {{ $data['setting_data']->mobile ?? $data['setting_data']->whatsapp ?? $data['setting_data']->viber ?? ''}}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i class="la la-envelope-o icon-element"></i>
-                                        <h5 class="title font-size-16 pb-1">Email</h5>
-                                        <p class="map__desc"> {{ $data['setting_data']->email ?? ''}}</p>
-                                    </li>
-                                </ul>
-                                <ul class="social-profile text-center">
-                                    @if(@$data['setting_data']->facebook)
-                                        <li><a href="{{@$data['setting_data']->facebook}}"><span class="fa-brands fa-facebook"></span></a></li>
-                                    @endif
-                                    @if(@$data['setting_data']->youtube)
-                                        <li><a href="{{@$data['setting_data']->youtube}}"><span class="fa-brands fa-youtube"></span></a></li>
-
-                                    @endif
-                                    @if(@$data['setting_data']->instagram)
-                                        <li><a href="{{@$data['setting_data']->instagram}}"><span class="fa-brands fa-instagram"></span></a></li>
-                                    @endif
-                                    @if(@$data['setting_data']->linkedin)
-                                        <li><a href="{{@$data['setting_data']->linkedin}}"><span class="fa-brands fa-linkedin"></span></a></li>
-                                    @endif
-                                    @if(!empty(@$data['setting_data']->ticktock))
-                                        <li><a href="{{@$data['setting_data']->ticktock}}"><span class="fa-brands fa-tiktok"></span></a></li>
-                                    @endif
-                                </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw600 mb10">Email</label>
+                                        <input class="form-control" type="email" name="email" placeholder="Email address">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw600 mb10">Subject</label>
+                                        <input class="form-control" type="text" name="subject" placeholder="Enter subject">
+                                        <input class="form-control" type="hidden" name="type" value="contact form inquiry">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb10">
+                                        <label class="heading-color ff-heading fw600 mb10">Message</label>
+                                        <textarea class="message-control form-control" rows="4" name="message" placeholder="Write message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt20">
+                                    <div class="d-grid">
+                                        <button type="submit" class="ud-btn btn-thm">Send Message <i class="fal fa-arrow-right-long"></i></button>
+                                    </div>
+                                </div>
                             </div>
-                        </div><!-- end form-content -->
-                    </div><!-- end form-box -->
-                </div><!-- end col-lg-4 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end contact-area -->
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 mt70 ml60 pl30-md pl15-xs wow fadeInRight" data-wow-delay="500ms">
+                    <div class="mb30">
+                        <h2 class="title text-capitalize">Have any questions? You can also <br class="d-none d-md-block"> contact us directly.</h2>
+                    </div>
+                    <div class="why-chose-list style2">
+                        <div class="list-one d-flex align-items-start mb30">
+                            <span class="list-icon flex-shrink-0 flaticon-home-3"></span>
+                            <div class="list-content flex-grow-1 mt5 ml20">
+                                <h6 class="mb-1">  {{$data['setting_data']->address ?? ''}}</h6>
+                                <p class="text mb-0 fz15">Our address</p>
+                            </div>
+                        </div>
+                        <div class="list-one d-flex align-items-start mb30">
+                            <span class="list-icon flex-shrink-0 flaticon-email"></span>
+                            <div class="list-content flex-grow-1 mt5 ml20">
+                                <h6 class="mb-1"><a href="mailto:{{@$data['setting_data']->email ?? ''}}">
+                                        {{$data['setting_data']->email ?? ''}}
+                                    </a> </h6>
+                                <p class="text mb-0 fz15">Send us an email.</p>
+                            </div>
+                        </div>
+                        <div class="list-one d-flex align-items-start mb30">
+                            <span class="list-icon flex-shrink-0 flaticon-smartphone"></span>
+                            <div class="list-content flex-grow-1 mt5 ml20">
+                                <h6 class="mb-1">
+                                    <a href="tel:{{$data['setting_data']->phone ?? $data['setting_data']->mobile ?? $data['setting_data']->whatsapp ?? $data['setting_data']->viber ?? ''}}">
+                                        {{$data['setting_data']->phone ?? $data['setting_data']->mobile ?? $data['setting_data']->whatsapp ?? $data['setting_data']->viber ?? ''}}
+                                    </a>
+                                </h6>
+                                <p class="text mb-0 fz15">Give us a call</p>
+                            </div>
+                        </div>
+                        <div class="list-one  mb30">
+                            @if(!empty(@$data['setting_data']->facebook) || !empty(@$data['setting_data']->youtube) || !empty(@$data['setting_data']->instagram) || !empty(@$data['setting_data']->linkedin) || !empty(@$data['setting_data']->ticktock))
+                                <h4 class="form-title mb25">Follow us on: </h4>
+                                <div class="social-style2 d-flex align-items-start">
+                                @if(@$data['setting_data']->facebook)
+                                    <a href="{{@$data['setting_data']->facebook}}" class="me-3">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </a>
+                                @endif
+                                @if(@$data['setting_data']->youtube)
+                                    <a href="{{@$data['setting_data']->youtube}}" class="me-3">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </a>
+                                @endif
+                                @if(@$data['setting_data']->instagram)
+                                    <a href="{{@$data['setting_data']->instagram}}" class="me-3">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                @endif
+                                @if(@$data['setting_data']->linkedin)
+                                    <a href="{{@$data['setting_data']->linkedin}}" class="me-3">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                @endif
+                                @if(!empty(@$data['setting_data']->ticktock))
+                                    <a href="{{@$data['setting_data']->ticktock}}" class="me-3">
+                                        <i class="fa-brands fa-tiktok"></i>
+                                    </a>
+                                @endif
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-    <section class="map-area padding-bottom-100px">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="map-container">
-                        @if($data['setting_data'] && $data['setting_data']->google_map)
-                            <iframe src="{{ $data['setting_data']->google_map }}" style="border:0;width: 100%;height: 465px;" allowfullscreen="" loading="lazy"></iframe>
-                        @endif
-                    </div><!-- end map-container -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end map-area -->
-
+    @if($data['setting_data'] && $data['setting_data']->google_map)
+        <section class="p-0">
+            <iframe class="home8-map contact-page" src="{{ $data['setting_data']->google_map }}" style="border:0;width: 100%;height: 400px;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    @endif
 @endsection
 @section('js')
     <script src="{{asset('assets/common/lazyload.js')}}"></script>

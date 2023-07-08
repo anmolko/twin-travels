@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label>Description </label>
-                                                <textarea class="form-control" maxlength="400" rows="6" name="list_description[]" id="accordian_two_editor_{{$i}}">{{$flash_card[$i-1]->list_description ?? null}}</textarea>
+                                                <textarea class="form-control" maxlength="600" rows="6" name="list_description[]" id="accordian_two_editor_{{$i}}">{{$flash_card[$i-1]->list_description ?? null}}</textarea>
                                                 <div class="invalid-feedback">
                                                     Please write the description.
                                                 </div>
