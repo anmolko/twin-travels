@@ -27,7 +27,6 @@ class BookFlightRequest extends FormRequest
         return [
             'name'          => 'required|string|max:50',
             'phone'         => 'required|numeric|digits:10',
-            'message'       => 'required|max:200',
         ];
     }
 
@@ -38,8 +37,6 @@ class BookFlightRequest extends FormRequest
             'phone.required'            => 'Please enter your phone number',
             'phone.numeric'             => 'This field must be numeric',
             'phone.digits'              => 'The phone number must be 10 digits',
-            'message.required'          => 'Please enter a short message regarding your inquiry',
-            'message.max'               => 'Message must be less than 200 characters',
         ];
     }
 }

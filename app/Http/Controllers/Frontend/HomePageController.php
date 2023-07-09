@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\CustomerInquiryRequest;
 use App\Mail\ContactDetail;
 use App\Models\Backend\Activity\Country;
 use App\Models\Backend\CustomerInquiry;
+use App\Models\Backend\FlightInquiry;
 use App\Models\Backend\Homepage\Slider;
 use App\Models\Backend\News\Blog;
 use App\Models\Backend\Page\PageSectionGallery;
@@ -97,6 +98,7 @@ class HomePageController extends BackendBaseController
 
     public function contactStore(CustomerInquiryRequest $request)
     {
+        $data                   = $request->except(['_token']);
         $data['setting_data']   = Setting::first();
         $data['title']          = 'Contact us response';
 
@@ -104,12 +106,11 @@ class HomePageController extends BackendBaseController
         try {
             CustomerInquiry::create($request->all());
 
-//            if(!app()->environment('local')){
-//                Mail::to($data['setting_data']->email)->send(new ContactDetail($data));
-//            }
+            if(!app()->environment('local')){
+                Mail::to($data['setting_data']->email)->send(new ContactDetail($data));
+            }
 
             Session::flash('success','Your message was submitted successfully');
-
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
@@ -121,10 +122,15 @@ class HomePageController extends BackendBaseController
 
     public function storeFlightBookInfo(BookFlightRequest $request)
     {
+        $data                   = $request->except(['_token']);
+        $data['setting_data']   = Setting::first();
+        $data['title']          = 'Flight inquiry details';
+
         DB::beginTransaction();
         try {
-            CustomerInquiry::create($request->all());
-            Session::flash('success','Your message was submitted successfully');
+            FlightInquiry::create($request->all());
+
+            Session::flash('success','Details about flight are sent. We will get back to you shortly.');
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
