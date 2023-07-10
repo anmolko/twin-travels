@@ -122,6 +122,7 @@ class HomePageController extends BackendBaseController
 
     public function storeFlightBookInfo(BookFlightRequest $request)
     {
+        dd($request->all());
         $data                   = $request->except(['_token']);
         $data['setting_data']   = Setting::first();
         $data['title']          = 'Flight inquiry details';
@@ -129,6 +130,10 @@ class HomePageController extends BackendBaseController
         DB::beginTransaction();
         try {
             FlightInquiry::create($request->all());
+
+            if(!app()->environment('local')){
+                Mail::to($data['setting_data']->email)->send(new ContactDetail($data));
+            }
 
             Session::flash('success','Details about flight are sent. We will get back to you shortly.');
             DB::commit();

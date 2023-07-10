@@ -1,3 +1,4 @@
+@include($module.'includes.toast_alert')
 <script>
     $(document).on('change','#travel_destination', function (e) {
         let value = $(this).val();
@@ -75,9 +76,17 @@
             return false;
         }
 
+
         let route = $(this).attr('action');
         let method = $(this).attr('method');
         let data = new FormData(this);
+        data.append('destination',destination);
+        data.append('from',from);
+        data.append('to',to);
+        data.append('travel_date',travel_date);
+        data.append('adult_number',adult_number);
+        data.append('kids_number', kids_number);
+        data.append('travel_type', travel_type);
 
         $.ajax({
             url:route,
