@@ -31,10 +31,10 @@
                     </div>
                 @endforeach
             </section>
-{{--            <div class="carousel-control-block d-flex d-md-none">--}}
-{{--                <div class="carousel-btn-block slider-navigation-btn"> <span class="carousel-btn left-btn"><i class="fa fa-angle-up"></i></span> <span class="carousel-btn right-btn"><i class="fa fa-angle-down"></i></span> </div>--}}
-{{--                <div class="slider-number-count"></div>--}}
-{{--            </div>--}}
+            {{--            <div class="carousel-control-block d-flex d-md-none">--}}
+            {{--                <div class="carousel-btn-block slider-navigation-btn"> <span class="carousel-btn left-btn"><i class="fa fa-angle-up"></i></span> <span class="carousel-btn right-btn"><i class="fa fa-angle-down"></i></span> </div>--}}
+            {{--                <div class="slider-number-count"></div>--}}
+            {{--            </div>--}}
         </div>
 
         <section class="pt-0 pb0 bgc-f7 pb50-md">
@@ -70,58 +70,58 @@
 
         @if(count($data['all_packages'])>0)
             <section class="bgc-f7">
-            <div class="container">
-                <div class="row align-items-center wow fadeInUp" data-wow-delay="00ms">
-                    <div class="col-lg-9">
-                        <div class="main-title2">
-                            <h2 class="title">Our Top Tour</h2>
-                            <p class="paragraph">
-                                We have wide variety of tours and travel packages for your selection
-                            </p>
+                <div class="container">
+                    <div class="row align-items-center wow fadeInUp" data-wow-delay="00ms">
+                        <div class="col-lg-9">
+                            <div class="main-title2">
+                                <h2 class="title">Our Top Tour</h2>
+                                <p class="paragraph">
+                                    We have wide variety of tours and travel packages for your selection
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="text-start text-lg-end mb-3">
+                                <a class="ud-btn2" href="{{ route('frontend.activity.index') }}">View All<i class="fal fa-arrow-right-long"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="text-start text-lg-end mb-3">
-                            <a class="ud-btn2" href="{{ route('frontend.activity.index') }}">See All Properties<i class="fal fa-arrow-right-long"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="feature-listing-slider navi_pagi_bottom_center slider-dib-sm row">
-                            @foreach($data['all_packages'] as $package)
-                                <div class="col-md-4 item">
-                                    <div class="listing-style1">
-                                        <div class="list-thumb">
-                                            <img class="w-100 lazy" data-src="{{ asset(imagePath($package->image)) }}" alt="">
-                                            @if($package->package_ribbon_id)
-                                                <div class="list-tag fz12 {{$package->packageRibbon->key ?? ''}}"><span class="flaticon-electricity me-2"></span>{{$package->packageRibbon->title ?? ''}}</div>
-                                            @endif
-                                            <div class="list-price">
-                                                <a href="{{ route('frontend.activity.category', $package->packageCategory->slug) }}">
-                                                    {{ $package->packageCategory->title }} {{ $package->price ?  ' / ' . $package->price:''}}
-                                                </a>
+                    <div class="row">
+                        <div class="col-lg-12 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="feature-listing-slider navi_pagi_bottom_center slider-dib-sm row">
+                                @foreach($data['all_packages'] as $package)
+                                    <div class="col-md-4 item">
+                                        <div class="listing-style1">
+                                            <div class="list-thumb">
+                                                <img class="w-100 lazy" data-src="{{ asset(imagePath($package->image)) }}" alt="">
+                                                @if($package->package_ribbon_id)
+                                                    <div class="list-tag fz12 {{$package->packageRibbon->key ?? ''}}"><span class="flaticon-electricity me-2"></span>{{$package->packageRibbon->title ?? ''}}</div>
+                                                @endif
+                                                <div class="list-price">
+                                                    <a href="{{ route('frontend.activity.category', $package->packageCategory->slug) }}">
+                                                        {{ $package->packageCategory->title }} {{ $package->price ?  ' / ' . $package->price:''}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <p class="list-text">
+                                                    <i class="fal fa-earth mr-1"></i>
+                                                    {{ $package->country->title }}
+                                                </p>
+                                                <h6 class="list-title">
+                                                    <a href="{{ route('frontend.activity.show',$package->slug) }}">
+                                                        {{ $package->title ?? '' }}
+                                                    </a>
+                                                </h6>
                                             </div>
                                         </div>
-                                        <div class="list-content">
-                                            <p class="list-text">
-                                                <i class="fal fa-earth mr-1"></i>
-                                                {{ $package->country->title }}
-                                            </p>
-                                            <h6 class="list-title">
-                                                <a href="{{ route('frontend.activity.show',$package->slug) }}">
-                                                    {{ $package->title ?? '' }}
-                                                </a>
-                                            </h6>
-                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         @endif
 
         <section class="cta-banner4 d-flex align-items-center" data-stellar-background-ratio="0.1" style="background-position: 50% 4.84063px;">
@@ -179,37 +179,37 @@
 
         @if(count($data['countries'])>0)
             <section class="pb30 pb30-md bgc-f7">
-            <div class="container">
-                <div class="row align-items-md-center wow fadeInUp" data-wow-delay="00ms" style="visibility: visible; animation-delay: 0ms; animation-name: fadeInUp;">
-                    <div class="col-lg-9">
-                        <div class="main-title2">
-                            <h2 class="title">Properties by Cities</h2>
-                            <p class="paragraph">Aliquam lacinia diam quis lacus euismod</p>
-                        </div>
-                    </div>
-{{--                    <div class="col-lg-3">--}}
-{{--                        <div class="text-start text-lg-end mb-3">--}}
-{{--                            <a class="ud-btn2" href="#">See All Properties<i class="fal fa-arrow-right-long dark-color"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                </div>
-                <div class="row wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
-                    @foreach($data['countries'] as $country)
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="home9-city-style position-relative mb30 mb20-md mb0-sm d-flex align-items-center">
-                                <div class="city-img flex-shrink-0">
-                                    <img class="lazy" data-src="{{ asset(imagePath($country->image))}}" alt="">
-                                </div>
-                                <div class="flex-shrink-1 ms-3">
-                                    <h6 class="mb-1">{{ $country->title }}</h6>
-                                    <p class="mb-0">{{ $country->packages_count }} Activities</p>
-                                </div>
+                <div class="container">
+                    <div class="row align-items-md-center wow fadeInUp" data-wow-delay="00ms" style="visibility: visible; animation-delay: 0ms; animation-name: fadeInUp;">
+                        <div class="col-lg-9">
+                            <div class="main-title2">
+                                <h2 class="title">Activities by Cities</h2>
+                                <p class="paragraph">View our best activities based on different cities</p>
                             </div>
                         </div>
-                    @endforeach
+                        {{--                    <div class="col-lg-3">--}}
+                        {{--                        <div class="text-start text-lg-end mb-3">--}}
+                        {{--                            <a class="ud-btn2" href="#">View All Activities<i class="fal fa-arrow-right-long dark-color"></i></a>--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                    </div>
+                    <div class="row wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                        @foreach($data['countries'] as $country)
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="home9-city-style position-relative mb30 mb20-md mb0-sm d-flex align-items-center">
+                                    <div class="city-img flex-shrink-0">
+                                        <img class="lazy" data-src="{{ asset(imagePath($country->image))}}" alt="">
+                                    </div>
+                                    <div class="flex-shrink-1 ms-3">
+                                        <h6 class="mb-1">{{ $country->title }}</h6>
+                                        <p class="mb-0">{{ $country->packages_count }} Activities</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         @endif
 
         @if(count($data['testimonials'])>0)
@@ -288,47 +288,47 @@
         </section>
 
 
-    @if(count($data['blogs'])>0)
+        @if(count($data['blogs'])>0)
             <section class="pb90 pb20-md">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 m-auto wow fadeInUp" data-wow-delay="00ms">
-                        <div class="main-title2 text-start text-md-center">
-                            <h2 class="title">From Our Blog</h2>
-                            <p class="paragraph">Read our recent news and articles</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row wow fadeInUp" data-wow-delay="300ms">
-                    @foreach($data['blogs'] as $blog)
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="blog-style1">
-                                <div class="blog-img">
-                                    <img class="w-100" src="{{ asset(imagePath($blog->image))}}" alt="">
-                                </div>
-                                <div class="blog-content">
-                                    <div class="date">
-                                        <span class="day">{{date('d', strtotime($blog->created_at))}}</span>
-                                        <span class="month">{{date('M Y', strtotime($blog->created_at))}}</span>
-                                    </div>
-                                    <a class="tag" href="{{ route('frontend.blog.category', $blog->blogCategory->slug) }}">{{ $blog->blogCategory->title ?? '' }}</a>
-                                    <h6 class="title mt-1">
-                                        <a href="{{ route('frontend.blog.show', $blog->slug) }}">
-                                            {{ $blog->title ?? '' }}
-                                        </a>
-                                    </h6>
-                                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 m-auto wow fadeInUp" data-wow-delay="00ms">
+                            <div class="main-title2 text-start text-md-center">
+                                <h2 class="title">From Our Blog</h2>
+                                <p class="paragraph">Read our recent news and articles</p>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
+                    <div class="row wow fadeInUp" data-wow-delay="300ms">
+                        @foreach($data['blogs'] as $blog)
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="blog-style1">
+                                    <div class="blog-img">
+                                        <img class="w-100" src="{{ asset(imagePath($blog->image))}}" alt="">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="date">
+                                            <span class="day">{{date('d', strtotime($blog->created_at))}}</span>
+                                            <span class="month">{{date('M Y', strtotime($blog->created_at))}}</span>
+                                        </div>
+                                        <a class="tag" href="{{ route('frontend.blog.category', $blog->blogCategory->slug) }}">{{ $blog->blogCategory->title ?? '' }}</a>
+                                        <h6 class="title mt-1">
+                                            <a href="{{ route('frontend.blog.show', $blog->slug) }}">
+                                                {{ $blog->title ?? '' }}
+                                            </a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        </section>
-    @endif
-    @include($view_path.'includes.book-flight')
-@endsection
+            </section>
+        @endif
+        @include($view_path.'includes.book-flight')
+        @endsection
 
-@section('js')
-    <script src="{{asset('assets/common/lazyload.js')}}"></script>
+        @section('js')
+            <script src="{{asset('assets/common/lazyload.js')}}"></script>
     @include($view_path.'includes.script')
 @endsection
